@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/POTAEPT/my-shop#readme",
   "dependencies": {
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "mysql2": "^3.14.5"
   },
