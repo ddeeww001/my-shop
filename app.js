@@ -15,6 +15,9 @@ app.get('/', (req, res) => {
   res.send('Welcome to Mini POS API 🎉');
 });
 
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
+
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from Express!' });
 });
