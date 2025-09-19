@@ -8,7 +8,17 @@
 <body>
     <h1>Register</h1>
     <div class="card">
-        <form action="/register" method="POST">
+        <!-- แสดง error ถ้ามี -->
+        <script>
+          const params = new URLSearchParams(window.location.search);
+          if (params.get('error') === 'UsernameTaken') {
+            document.write('<div style="color:red;">Username already taken</div>');
+          }
+          if (params.get('error') === 'ServerError') {
+            document.write('<div style="color:red;">Server error, please try again</div>');
+          }
+        </script>
+        <form action="/api/users/register" method="POST">
             <div class="username-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>

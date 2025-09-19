@@ -1,6 +1,6 @@
 const db = require('../config/db.js');
 
-async function createUser(username, hashedPassword, role = 'cashier') {
+async function createUser(username, hashedPassword, role = 'admin') {
   const [result] = await db.query(
     'INSERT INTO users (username, password, role) VALUES (?, ?, ?)',
     [username, hashedPassword, role]
