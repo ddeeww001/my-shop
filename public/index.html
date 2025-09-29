@@ -3,23 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini POS</title>
+    <title>POS</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to Mini POS</h1>
-    <div class="card">
-        <form action="/api/users/login" method="POST">
-            <div class="username-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="password-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Login</button>
-            <button type="button" onclick="window.location.href='/reg.html'">Register</button>
-        </form>
-    </div>
+    <header>
+        <h1>Welcome to Mini POS</h1>
+        <button type="submit" onclick="window.location.href='login.html'">Dashboard</button>
+    </header>
 </body>
 </html>

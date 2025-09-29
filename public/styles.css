@@ -4,7 +4,7 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-.Dashboard-header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,3 +39,10 @@ body {
 .sideMenu a:hover{
    color:rgb(63, 63, 63)
 }
+
+.sideMenu div{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
