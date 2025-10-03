@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cssfile/products.css">
+</head>
+<body>
+    <header class="Dashboard-header">
+        <div>
+            <h1>Welcome to the Dashboard</h1>
+        </div>
+        <div>
+            <button type="button" onclick="window.location.href='/'">Logout</button>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="row">
+            <div id="sidebar"></div>
+            <script src="template/template.js"></script>
+        </div>
+
+        <div class="product-list">
+            <div class="head">
+                <h2>Product List</h2>
+                <button onclick="window.location.href='/addProduct.html'" class="btn-add">Add Product</button>
+            </div>
+            <div class="list">
+                 <!-- สินค้าจะถูกโหลดที่นี่โดย JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="productsControl.js"></script>
+</body>
+</html>

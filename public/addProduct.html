@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add product</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cssfile/products.css">
+</head>
+<body>
+    <header class="Dashboard-header">
+        <div>
+            <h1>Add Product</h1>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="row">
+            <div id="sidebar"></div>
+            <script src="template/template.js"></script>
+        </div>
+
+        <div class="form-container">
+            <form action="/api/products/add" method="POST" class="product-form">
+                <div class="form-group">
+                    <label for="name">Product Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price (฿):</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" name="stock" min="0" value="0" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Add Product</button>
+                    <button type="button" class="btn-secondary" onclick="window.location.href='/products.html'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
