@@ -27,6 +27,12 @@ app.use('/api/users', userRoutes);
 const productRoutes = require('./routes/productRoutes');
 app.use('/api/products', productRoutes);
 
+// Image upload / retrieval routes
+// POST /images/upload (multipart/form-data field name: 'image')
+// GET  /images/:id -> returns the image binary
+const productImageRoutes = require('./routes/productImageRoutes');
+app.use('/images', productImageRoutes);
+
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from Express!' });
 });
@@ -41,4 +47,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
+  console.log('Image endpoints: POST /images/upload  GET /images/:id');
 });
