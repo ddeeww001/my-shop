@@ -30,13 +30,21 @@ async function loadProducts() {
     products.forEach(product => {
       const productCard = `
         <div class="product-card">
-          <h4>${product.name}</h4>
-          <p>Price: ฿${product.price}</p>
-          <p>Stock: ${product.stock || 0}</p>
-          <p>${product.description || ''}</p>
-          <div class="product-actions">
-            <button onclick="editProduct(${product.id})">Edit</button>
-            <button onclick="deleteProduct(${product.id})">Delete</button>
+          <div class="product-image">
+            <span>No Image</span>
+          </div>
+          <div class="product-info">
+            <div class="product-name">${product.name}</div>
+            <div class="product-details">
+              <div class="product-price">ราคา: ฿${product.price}</div>
+              <div class="product-stock">
+                ในคลัง: <span class="stock-count">${product.stock || 0} ชิ้น</span>
+              </div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-edit" onclick="editProduct(${product.id})">แก้ไข</button>
+              <button class="btn-delete" onclick="deleteProduct(${product.id})">ลบ</button>
+            </div>
           </div>
         </div>
       `;
