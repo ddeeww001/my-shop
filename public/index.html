@@ -34,6 +34,49 @@
                 </div>
             </div>
         </div>
+        
+                <!-- Transaction Summary UI -->
+                <div id="transaction-summary" style="max-width:420px;margin:20px auto;padding:16px;border:1px solid #e6e6e6;border-radius:8px;background:#fff;">
+                        <h2 style="margin:0 0 12px;font-size:20px;font-weight:700;">Transaction Summary</h2>
+                        <div style="display:flex;justify-content:space-between;color:#666;margin-bottom:8px;font-size:16px;">
+                                <div>Subtotal</div>
+                                <div id="subtotal">฿0.00</div>
+                        </div>
+                        <hr style="border:none;border-top:1px dashed #ddd;margin:8px 0 12px;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:6px;border:1px solid #cfe0f6;background:#fff;">
+                                <div style="font-size:16px;font-weight:600;">Total</div>
+                                <div id="total" style="font-size:16px;font-weight:700;">฿0.00</div>
+                        </div>
+
+                        <div style="margin-top:12px;display:flex;gap:8px;justify-content:space-between;">
+                            <button id="calcBtn" style="flex:1;padding:10px;background:#2b82d9;color:#fff;border:none;border-radius:6px;font-size:18px;">Calculate</button>
+                            <button id="clearBtn" style="flex:1;padding:10px;background:#f0f0f0;color:#333;border:1px solid #ddd;border-radius:6px;font-size:18px;">Clear</button>
+                        </div>
+
+                        <!-- Numeric keypad -->
+                        <div id="keypad" style="margin-top:16px;border:1px solid #e6e6e6;padding:14px;border-radius:8px;background:#fff;">
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;font-size:20px;margin-bottom:12px;">
+                                <button class="key">7</button>
+                                <button class="key">8</button>
+                                <button class="key">9</button>
+                                <button class="key">4</button>
+                                <button class="key">5</button>
+                                <button class="key">6</button>
+                                <button class="key">1</button>
+                                <button class="key">2</button>
+                                <button class="key">3</button>
+                                <button class="key">0</button>
+                                <button class="key">.</button>
+                                <button id="deleteKey" class="key">Delete</button>
+                            </div>
+                            <div style="display:flex;justify-content:flex-end;gap:12px;">
+                                <button id="clearKey" style="padding:8px 12px;background:#fff;border:1px solid #ddd;border-radius:6px;">Clear</button>
+                                <button id="applyKey" style="padding:8px 16px;background:#2b82d9;color:#fff;border:none;border-radius:6px;">Apply</button>
+                            </div>
+                        </div>
+                </div>
     </div>
+   
+
 </body>
 </html>
