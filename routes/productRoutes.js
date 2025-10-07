@@ -47,12 +47,20 @@ router.get('/:id', async (req, res) => {
 // เพิ่มสินค้าใหม่ (รองรับรูปภาพ)
 router.post('/add', upload.single('image'), async (req, res) => {
   try {
-    const { name, price, stock} = req.body;
-    const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
-    
-    const query = 'INSERT INTO products (name, price, stock, image) VALUES (?, ?, ?, ?)';
-    const [result] = await db.query(query, [name, price, stock || 0, imagePath]);
-    
+    const { name, price, stock } = req.body;
+    let query, params;
+
+    if (req.file) {
+      const imagePath = `/uploads/${req.file.filename}`;
+      query = 'INSERT INTO products (name, price, stock, image) VALUES (?, ?, ?, ?)';
+      params = [name, price, stock || 0, imagePath];
+    } else {
+      query = 'INSERT INTO products (name, price, stock) VALUES (?, ?, ?)';
+      params = [name, price, stock || 0];
+    }
+
+    await db.query(query, params);
+
     res.redirect('/products.html?success=added');
   } catch (err) {
     console.error(err);
