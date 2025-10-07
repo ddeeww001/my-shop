@@ -1,14 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const db = require("../config/db");
+const multer = require('multer');
+const path = require('path');
+
+// ตั้งค่า multer สำหรับอัปโหลดรูป
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads/') // สร้างโฟลเดอร์ public/uploads/
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, 'product-' + uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
 
 router.get('/list', async (req, res) => {
     try{
         const [rows] = await db.query('SELECT * FROM products ORDER BY name' );
-        res.json(rows); // เปลี่ยนจาก row เป็น rows
+        res.json(rows);
     }catch (err) {
         console.error(err);
-        res.status(500).json({ error: 'SERVER ERROR'}); // แก้ไข SEVER เป็น SERVER
+        res.status(500).json({ error: 'SERVER ERROR'});
     }
 });
 
@@ -29,15 +44,23 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// เพิ่มสินค้าใหม่
-router.post('/add', async (req, res) => {
+// เพิ่มสินค้าใหม่ (รองรับรูปภาพ)
+router.post('/add', upload.single('image'), async (req, res) => {
   try {
     const { name, price, stock } = req.body;
-    
-    const query = 'INSERT INTO products (name, price, stock) VALUES (?, ?, ?)';
-    const [result] = await db.query(query, [name, price, stock || 0]);
-    
-    // redirect กลับไปหน้า products หลังเพิ่มสำเร็จ
+    let query, params;
+
+    if (req.file) {
+      const imagePath = `/uploads/${req.file.filename}`;
+      query = 'INSERT INTO products (name, price, stock, image) VALUES (?, ?, ?, ?)';
+      params = [name, price, stock || 0, imagePath];
+    } else {
+      query = 'INSERT INTO products (name, price, stock) VALUES (?, ?, ?)';
+      params = [name, price, stock || 0];
+    }
+
+    await db.query(query, params);
+
     res.redirect('/products.html?success=added');
   } catch (err) {
     console.error(err);
